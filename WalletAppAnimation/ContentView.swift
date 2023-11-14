@@ -21,7 +21,7 @@ struct ContentView: View {
             Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
                 .zIndex(1)
             
-            DetailCardView()
+            PaymentView()
                 .zIndex(0)
             
             Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
@@ -176,7 +176,7 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    func DetailCardView()-> some View {
+    func PaymentView()-> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(Date().formatted(date: .abbreviated, time: .omitted))
                 .fontWeight(.semibold)

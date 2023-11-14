@@ -16,15 +16,16 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 15) {
             Header
+                .padding(.bottom, 10)
             
-            Card()
-                .padding(.top, 10)
+            Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
                 .zIndex(1)
             
             DetailCardView()
                 .zIndex(0)
             
-            Card(cardColor: .orange, spent: "7821.25", cardNumer: "9813", cardIndex: 1)
+            Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
+            
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -34,21 +35,6 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .ignoresSafeArea()
         }
-//        .overlay(alignment: .trailing) {
-//            HStack(spacing: 10) {
-//                Text("My Cards")
-//                Image(systemName: "chevron.right")
-//            }
-//            .font(.system(size: 19))
-//            .fontWeight(.semibold)
-//            .contentShape(Rectangle())
-//            .onTapGesture {
-//                animatePage()
-//            }
-//            .rotationEffect(.init(degrees: -90))
-//            .offset(x: startAnimation ? 120 : 22)
-//            .opacity(startAnimation ? 0 : 1)
-//        }
         .onAppear {
             animatePage()
         }
@@ -87,7 +73,6 @@ struct ContentView: View {
                 .animation(.interactiveSpring(response: 1, dampingFraction: 1, blendDuration: 1).delay(0.9), value: startAnimation)
             
             Button {
-                
             } label: {
                 Image(systemName: "plus")
                     .font(.title2).bold()
@@ -104,14 +89,14 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    func Card(cardColor: Color = .white, spent: String = "5421.80", cardNumer: String = "3667", cardIndex: CGFloat = 0)-> some View {
+    func Card(logo: UIImage, cardColor: Color, spent: String, cardNumer: String, cardIndex: CGFloat)-> some View {
         let extraDelay: CGFloat = (cardIndex / 3.5)
         
         VStack(alignment: .leading, spacing: 15) {
-            Image(.mastercardLogo)
+            Image(uiImage: logo)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 45, height: 45)
+                .frame(width: 50, height: 50)
                 .offset(x: startAnimation ? 0 : 15, y: startAnimation ? 0 : 15)
                 .opacity(startAnimation ? 1 : 0)
                 .animation(.easeInOut(duration: 1).delay(1 + extraDelay), value: startAnimation)
@@ -197,7 +182,7 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.gray)
             
-            Text("$695.50")
+            Text("$705.50")
                 .font(.title).bold()
                 .foregroundStyle(.white)
                 .offset(x: startAnimation ? 0 : 100)
@@ -206,7 +191,6 @@ struct ContentView: View {
             
             HStack {
                 Button {
-                    
                 } label: {
                     Text("Manage")
                         .fontWeight(.semibold)
@@ -220,7 +204,6 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    
                 } label: {
                     Text("Pay Now")
                         .fontWeight(.semibold)
@@ -241,7 +224,6 @@ struct ContentView: View {
         }
         .overlay(alignment: .topTrailing) {
             Button {
-                
             } label: {
                 Text("Due")
                     .fontWeight(.semibold)

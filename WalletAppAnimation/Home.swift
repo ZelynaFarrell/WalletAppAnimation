@@ -18,7 +18,7 @@ struct Home: View {
             Header
                 .padding(.bottom, 10)
             
-            NavigationLink(destination: AppleCardDetailView()) {
+            NavigationLink(destination: CardDetailView(detailHeader: "Apple Card", balance: "$4178.50")) {
                 Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
             }
             .zIndex(1)
@@ -26,7 +26,7 @@ struct Home: View {
             PaymentView()
                 .zIndex(0)
             
-            NavigationLink(destination: MasterCardDetailView()) {
+            NavigationLink(destination: CardDetailView(detailHeader: "MasterCard", balance: "$326.20")) {
                 Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
             }
         }

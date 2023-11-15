@@ -18,14 +18,17 @@ struct Home: View {
             Header
                 .padding(.bottom, 10)
             
-            Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
-                .zIndex(1)
+            NavigationLink(destination: AppleCardDetailView()) {
+                Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
+            }
+            .zIndex(1)
             
             PaymentView()
                 .zIndex(0)
             
-            Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
-            
+            NavigationLink(destination: MasterCardDetailView()) {
+                Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
+            }
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -36,7 +39,9 @@ struct Home: View {
                 .ignoresSafeArea()
         }
         .onAppear {
-            animateView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                animateView()
+            }
         }
         .background {
             Color(.white)

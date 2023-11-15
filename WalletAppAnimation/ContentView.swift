@@ -36,7 +36,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
         }
         .onAppear {
-            animatePage()
+            animateView()
         }
         .background {
             Color(.white)
@@ -45,7 +45,7 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
     }
     
-    func animatePage() {
+    func animateView() {
         withAnimation(.easeInOut(duration: 0.4)) {
             backgroundWidth = 40
         }

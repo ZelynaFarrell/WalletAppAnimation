@@ -119,6 +119,10 @@ struct CardDetailView: View {
                             .offset(x: -50, y: -40)
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                    .background {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .stroke(.black, style: .init(lineWidth: 0.7))
+                    }
                     .scaleEffect(scale, anchor: .bottom)
                 
                 VStack(alignment: .leading, spacing: 4) {

@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct CardDetailView: View {
-    var detailHeader: String
-    var balance: String
-    var bgColor: Color
-    @State private var allExpenses: [Expense] = []
     @Environment(\.colorScheme) var scheme
     @Environment(\.dismiss) var dismiss
+    @State private var allExpenses: [Expense] = []
+    
+    var cardName: String
+    var balance: String
+    var backgroundColor: Color
     
     var body: some View {
         ScrollView(.vertical) {
@@ -28,7 +29,7 @@ struct CardDetailView: View {
                                 dismiss()
                             }
                         
-                        Text(detailHeader)
+                        Text(cardName)
                             .font(.largeTitle).bold()
                     }
                     .frame(height: 45)
@@ -107,10 +108,10 @@ struct CardDetailView: View {
             
             ZStack {
                 Rectangle()
-                    .fill(bgColor)
+                    .fill(backgroundColor)
                     .overlay(alignment: .leading) {
                         Circle()
-                            .fill(bgColor)
+                            .fill(backgroundColor)
                             .overlay {
                                 Circle()
                                     .fill(.white.opacity(0.2))
@@ -179,5 +180,5 @@ struct CustomScrollBehaviour: ScrollTargetBehavior {
 
 
 #Preview {
-    CardDetailView(detailHeader: "Apple Card", balance: "$145.00", bgColor: .blue)
+    CardDetailView(cardName: "Apple Card", balance: "$145.00", backgroundColor: .blue)
 }

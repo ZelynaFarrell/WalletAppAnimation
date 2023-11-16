@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct RollingText: View {
+    @Binding var value: Int
+    @State var animationRange: [Int] = []
     
     var font: Font = .largeTitle
     var weight: Font.Weight = .regular
-    @Binding var value: Int
     var animationDuration: CGFloat = 0.15
-    @State var animationRange: [Int] = []
     
     var body: some View {
         HStack(spacing: 0) {

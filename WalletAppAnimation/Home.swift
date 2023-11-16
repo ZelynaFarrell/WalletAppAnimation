@@ -17,8 +17,9 @@ struct Home: View {
         VStack(spacing: 15) {
             Header
                 .padding(.leading, 8)
+                .padding(.top)
             
-            NavigationLink(destination: CardDetailView(detailHeader: "Apple Card", balance: "$4178.50", bgColor: .purple)) {
+            NavigationLink(destination: CardDetailView(cardName: "Apple Card", balance: "$4178.50", backgroundColor: .purple)) {
                 Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
             }
             .zIndex(1)
@@ -27,14 +28,14 @@ struct Home: View {
                 .shadow(color: .black.opacity(0.5), radius: 3, x: 0, y: 7)
                 .zIndex(0)
             
-            NavigationLink(destination: CardDetailView(detailHeader: "MasterCard", balance: "$326.20", bgColor: .mastercardBlue)) {
+            NavigationLink(destination: CardDetailView(cardName: "MasterCard", balance: "$326.20", backgroundColor: .mastercardBlue)) {
                 Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
             }
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background {
-            Color(.white)
+            Color(.white.opacity(0.95))
                 .frame(width: backgroundWidth)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .ignoresSafeArea()
@@ -48,7 +49,6 @@ struct Home: View {
             Color(.black)
                 .ignoresSafeArea()
         }
-//        .preferredColorScheme(.dark)
     }
     
     func animateView() {
@@ -113,7 +113,7 @@ struct Home: View {
                 
                 let separatedString: [String] = spent.components(separatedBy: ".")
                 if separatedString.indices.contains(0), animateText[0] {
-                    RollingText(font: .title, weight: .bold, value: .constant(NSString(string: separatedString[0]).integerValue), animationDuration: 1.5)
+                    RollingText(value: .constant(NSString(string: separatedString[0]).integerValue), font: .title, weight: .bold, animationDuration: 1.5)
                         .transition(.opacity)
                 }
                 
@@ -122,7 +122,7 @@ struct Home: View {
                     .padding(.horizontal, -4)
                 
                 if separatedString.indices.contains(1), animateText[1] {
-                    RollingText(font: .title, weight: .bold, value: .constant(NSString(string: separatedString[1]).integerValue), animationDuration: 1.5)
+                    RollingText(value: .constant(NSString(string: separatedString[1]).integerValue), font: .title, weight: .bold, animationDuration: 1.5)
                         .transition(.opacity)
                 }
             }

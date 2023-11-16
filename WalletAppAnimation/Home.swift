@@ -16,24 +16,25 @@ struct Home: View {
     var body: some View {
         VStack(spacing: 15) {
             Header
-                .padding(.bottom, 10)
+                .padding(.leading, 8)
             
-            NavigationLink(destination: CardDetailView(detailHeader: "Apple Card", balance: "$4178.50")) {
+            NavigationLink(destination: CardDetailView(detailHeader: "Apple Card", balance: "$4178.50", bgColor: .purple)) {
                 Card(logo: .apple, cardColor: .white, spent: "4178.50", cardNumer: "4322", cardIndex: 0)
             }
             .zIndex(1)
             
             PaymentView()
+                .shadow(color: .black.opacity(0.5), radius: 3, x: 0, y: 7)
                 .zIndex(0)
             
-            NavigationLink(destination: CardDetailView(detailHeader: "MasterCard", balance: "$326.20")) {
+            NavigationLink(destination: CardDetailView(detailHeader: "MasterCard", balance: "$326.20", bgColor: .mastercardBlue)) {
                 Card(logo: .mastercard, cardColor: .mastercardBlue, spent: "326.20", cardNumer: "5612", cardIndex: 1)
             }
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background {
-            Color(.black)
+            Color(.white)
                 .frame(width: backgroundWidth)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .ignoresSafeArea()
@@ -44,10 +45,10 @@ struct Home: View {
             }
         }
         .background {
-            Color(.white)
+            Color(.black)
                 .ignoresSafeArea()
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
     }
     
     func animateView() {
@@ -71,7 +72,6 @@ struct Home: View {
         HStack {
             Text("My Cards")
                 .font(.title).bold()
-                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .opacity(startAnimation ? 1 : 0)
                 .offset(x: startAnimation ? 0 : 100)
@@ -81,13 +81,14 @@ struct Home: View {
             } label: {
                 Image(systemName: "plus")
                     .font(.title2).bold()
-                    .foregroundStyle(.black)
-                    .padding(10)
+                    .foregroundStyle(.white)
+                    .padding(8)
                     .background {
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(.white)
+                            .fill(.black)
                     }
             }
+            .padding(.trailing, 3)
             .scaleEffect(startAnimation ? 1 : 0.001)
             .animation(.interactiveSpring(response: 1, dampingFraction: 0.6, blendDuration: 0.7).delay(0.7), value: startAnimation)
         }
@@ -161,11 +162,15 @@ struct Home: View {
         .padding(15)
         .padding(.horizontal, 10)
         .frame(maxWidth: .infinity)
-        .background(cardColor)
-        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .background {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(cardColor)
+                .stroke(.black.opacity(0.5), style: .init(lineWidth: 0.8))
+        }
         // MARK: animating cards
         .rotation3DEffect(.init(degrees: startAnimation ? 0 : -70), axis: (x: 1, y: 0, z: 0), anchor: .center)
         .scaleEffect(startAnimation ? 1 : 0.001, anchor: .bottom)
+        .shadow(color: .black.opacity(0.5), radius: 3, x: 0, y: 7)
         .animation(.interactiveSpring(response: 1, dampingFraction: 0.7, blendDuration: 1).delay(0.9 + extraDelay), value: startAnimation)
     }
     
@@ -241,7 +246,7 @@ struct Home: View {
             .animation(.easeInOut(duration: 0.8).speed(0.8).delay(1.7), value: startAnimation)
         }
         .padding(15)
-        .background(.ultraThickMaterial)
+        .background(.black)
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .padding(.vertical, 10)
         // MARK: Animating Detail Card

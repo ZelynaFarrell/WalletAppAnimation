@@ -16,6 +16,10 @@
 <br>
 
 ### **Videos and Demos**
+| Home View | Detail View |
+|:---------------:|:----------------:|
+|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/ac7536af-2ca2-4c67-ab31-d94f278ad4b5">|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/6730b8df-3446-42f7-b852-e68d149815b1">|
+
 
 #### **Usage**
 - Clone the repository.
@@ -24,4 +28,4 @@
 
 #### **Dependencies**
 - SwiftUI
-- UIKit(for ScrollTargetBehavior)
+- UIKit (for ScrollTargetBehavior)

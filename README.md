@@ -18,7 +18,7 @@
 ### **Videos and Demos**
 | Home View | Detail View |
 |:---------------:|:----------------:|
-|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/ac7536af-2ca2-4c67-ab31-d94f278ad4b5">|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/6730b8df-3446-42f7-b852-e68d149815b1">|
+|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/65bcac7f-1c19-4a66-b859-e08bded9b870">|<img width="400" src="https://github.com/ZelynaFarrell/WalletAppAnimation/assets/117409535/986b8435-f263-4674-b7e1-3c8ddaef2a6c">|
 
 
 #### **Usage**
